@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Splitter</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka+One">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato">
+    <link rel="stylesheet" href="./styles/main.css">
+</head>
+<body>
+    <h1 id="titulo">Team <span>Splitter</span></h1>
+
+    <div id="firstWrapper">
+        <div class="container" id="jogadoresInputDiv"> <!-- Container Input Jogadores-->
+            <h2>Jogadores:</h2>
+            <div id="input">
+                <div>
+                    <h3>Nome:</h3>
+                    <input type="text" id="playerInput" placeholder="Digite">
+                </div>
+                <div>
+                    <h3>Força:</h3>
+                    <input type="text" id="strengthInput" placeholder="Digite">
+                </div>
+                <button>Adicionar</button>
+                <button>SPLIT</button>
+            </div>
+            <div class="box"></div>
+        </div>
+    
+        <div id="containerTimes"> <!-- Container de todos os times -->
+            <div class="container"> <!-- Container TIME ALPHA -->
+                <h2>Time ALPHA</h2>
+                <p>Força Média: 0</p>
+                <p>Jogadores: 0</p>
+                <div class="box"></div>
+            </div>
+        
+            <div class="container"> <!-- Container TIME BRAVO -->
+                <h2>Time BRAVO</h2>
+                <p>Força Média: 0</p>
+                <p>Jogadores: 0</p>
+                <div class="box"></div>
+            </div>
+            
+        </div>
+    </div>
+</body>
+</html>

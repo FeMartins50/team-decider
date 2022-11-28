@@ -1,0 +1,95 @@
+body {
+    margin: 10px;
+    background-color: rgb(36, 36, 36);
+    color: white;
+    font-family: "Lato";
+}
+
+#titulo {
+    margin: 40px 0 20px;
+    text-align: center;
+    font-size: 4vw;
+    font-family: "Fredoka One" ;
+}
+#titulo span {
+    color: rgb(207, 135, 0);
+}
+
+#firstWrapper {
+    display: flex;
+}
+#jogadoresInputDiv {
+    flex: 1;
+}
+#containerTimes {
+    margin: 10px 20px;
+    flex: 4;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    
+}
+#containerTimes h2 {
+    margin: 0;
+}
+#containerTimes p {
+    margin: 0;
+}
+
+.container {
+    flex: 1;
+    justify-content: center;
+    text-align: center;
+    font-size: 1.3vw;
+    margin: 8px;
+}
+
+.box {
+    height: 32vw;
+    margin: 10px 0;
+    background-color: rgb(50, 50, 50);
+    border: 2px solid rgb(207, 135, 0);
+    border-radius: 5px;
+}
+#jogadoresInputDiv .box {
+    height: 24.25vw !important;
+}
+
+#input {
+    display: inline-block;
+}
+#input div {
+    margin: 5px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+#input h3 {
+    margin: 6px 0;
+}
+input {
+    height: 80%;
+    color: white;
+    border: 2px solid rgb(207, 135, 0);
+    border-radius: 4px;
+    margin: 2px;
+    font-size: 1.5vw;
+    background-color: rgb(50, 50, 50);
+}
+
+button {
+    color: lightgrey;
+    padding: 8px;
+    border: 0;
+    border-radius: 20px;
+    margin: 2px;
+    font-size: 1.25vw;
+    background-color: rgb(207, 135, 0);
+}
+button:hover {
+    color: white;
+}
+button:active {
+    background-color: rgb(207, 135, 0, 0.6);
+    color: rgb(211, 211, 211, 0.6);
+}
