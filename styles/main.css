@@ -93,3 +93,11 @@ button:active {
     background-color: rgb(207, 135, 0, 0.6);
     color: rgb(211, 211, 211, 0.6);
 }
+
+#tableJogador {
+    width: 100%;
+}
+#tableForca {
+    text-align: right;
+    width: 20%;
+}
