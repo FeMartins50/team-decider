@@ -25,18 +25,14 @@
                     <h3>Força:</h3>
                     <input type="text" id="strengthInput" placeholder="Digite">
                 </div>
-                <button>Adicionar</button>
-                <button>SPLIT</button>
+                <button onclick="addPlayer()">Adicionar</button>
+                <button onclick="split()">SPLIT</button>
             </div>
             <div class="box">
-                <table>
+                <table id="tableInput">
                     <tr>
                       <th id="tableJogador">Jogadores</th>
                       <th id="tableForca">Força</th>
-                    </tr>
-                    <tr>
-                      <td></td>
-                      <td></td>
                     </tr>
                 </table>
             </div>
@@ -48,14 +44,10 @@
                 <p>Força Média: 0</p>
                 <p>Jogadores: 0</p>
                 <div class="box">
-                    <table>
+                    <table id="tableAlpha">
                         <tr>
                           <th id="tableJogador">Jogadores</th>
                           <th id="tableForca">Força</th>
-                        </tr>
-                        <tr>
-                          <td></td>
-                          <td></td>
                         </tr>
                     </table>
                 </div>
@@ -66,20 +58,54 @@
                 <p>Força Média: 0</p>
                 <p>Jogadores: 0</p>
                 <div class="box">
-                    <table>
+                    <table id="tableBravo">
                         <tr>
                           <th id="tableJogador">Jogadores</th>
                           <th id="tableForca">Força</th>
                         </tr>
-                        <tr>
-                          <td></td>
-                          <td></td>
-                        </tr>
                     </table>
                 </div>
             </div>
-            
         </div>
     </div>
+
+    <script>      
+        function addRowToTable (tableId, playerName, playerStrength) { // Parametros: tableId , playerName , playerStrength
+            let tableInputBody = document.getElementById(tableId).children[0];
+            let newRow = tableInputBody.insertRow(-1);
+            // Insert a cell in the row at index 0
+            let newCell0 = newRow.insertCell(0);
+            // Append a text node to the cell
+            newCell0.appendChild(document.createTextNode(playerName));
+            // Insert a cell in the row at index 1
+            let newCell1 = newRow.insertCell(1);
+            // Append a text node to the cell
+            newCell1.appendChild(document.createTextNode(playerStrength));
+            newRow.onclick = () => {
+                let i = newRow.rowIndex;
+                document.getElementById(tableId).deleteRow(i);
+            }
+        }
+
+        function addPlayer() {
+            let player = document.getElementById("playerInput").value;
+            let strength = document.getElementById("strengthInput").value;
+            if (isNaN(strength) || !player || !strength) {
+                return;
+            }
+
+            document.getElementById("playerInput").value = "";
+            document.getElementById("strengthInput").value = "";
+
+            addRowToTable("tableInput", player, strength);
+        }
+    </script>
+    <script>
+        let tableInput = document.getElementById("tableInput");
+        let tableAlpha = document.getElementById("tableAlpha");
+        let tableBravo = document.getElementById("tableBravo");
+
+        
+    </script>
 </body>
 </html>
