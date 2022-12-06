@@ -15,7 +15,14 @@ function addRowToTable (tableId, playerName, playerStrength) { // Parametros: ta
     newRow.onclick = () => {
         let i = newRow.rowIndex;
         document.getElementById(tableId).deleteRow(i);
-        players.splice(i-1,1);
+        if (tableId === "tableInput") {
+            players.splice(i-1, 1);
+        } else if (tableId === "tableAlpha") {
+            alpha.splice(i-1, 1);
+        } else if (tableId === "tableBravo") {
+            bravo.splice(i-1, 1);
+        }
+        calcStrengthAndCounter();
     }
 }
 
@@ -39,28 +46,65 @@ function cleanTable (tableId) {
     }
 }
 
+function calcStrengthAndCounter () {
+    alphaStrength = 0;
+    bravoStrength = 0;
+    // Calcular força dos times
+    for (let player of alpha) {
+        alphaStrength += Number.parseInt(player[1]);
+    }
+    for (let player of bravo) {
+        bravoStrength += Number.parseInt(player[1]);
+    }
+
+    // Atualizar o 'document'
+    document.getElementById("counterAlpha").innerHTML = "Jogadores: " + alpha.length;
+    document.getElementById("counterBravo").innerHTML = "Jogadores: " + bravo.length;
+    document.getElementById("strengthAlpha").innerHTML = "Força Média: " + alphaStrength;
+    document.getElementById("strengthBravo").innerHTML = "Força Média: " + bravoStrength;
+}
+
 const alpha = [];
 const bravo = [];
+let alphaStrength = 0;
+let bravoStrength = 0;
 
 function split () {
     cleanTable("tableInput");
     cleanTable("tableAlpha");
     cleanTable("tableBravo");
+    players.push(...alpha, ...bravo);
     alpha.splice(0);
     bravo.splice(0);
+    alphaStrength = 0;
+    bravoStrength = 0;
+
+    // Ordenar 'players' do mais forte ao mais fraco
+    players.sort((playA, playB) => {
+        return parseInt(playB[1]) - parseInt(playA[1]);
+    });
+
     // Distribuir jogadores do array 'players' e aleatorizar os times
     let decider = true, player;
     while (players.length > 0) {
-        [ player ] = players.splice(Math.floor(Math.random() * players.length), 1);
+        decider = ( (alphaStrength - bravoStrength) <= 0 && (alpha.length - bravo.length) <= 0 );
+        [ player ] = players.splice(0, 1);
         if (decider) {
             alpha.push(player);
-            decider = false;
+            alphaStrength += Number.parseInt(player[1]);
         } else {
             bravo.push(player);
-            decider = true;
+            bravoStrength += Number.parseInt(player[1]);
         }
     }
-
+    
+    alpha.sort((playA, playB) => {
+        return parseInt(playB[1]) - parseInt(playA[1]);
+    });
+    bravo.sort((playA, playB) => {
+        return parseInt(playB[1]) - parseInt(playA[1]);
+    });
+    calcStrengthAndCounter();
     // Efetivamente colocar os jogadores dos arrays 'alpha' e 'bravo' nas 'table's do 'document'
     for (let [name, strength] of alpha) { // Alpha
         addRowToTable("tableAlpha", name, strength);
